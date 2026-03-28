@@ -50,12 +50,8 @@ const ensureIdentity = (display: string) => {
 
 export default function ChatWindow({ rooms }: Props) {
   const supabase = createClient();
-  const [username, setUsername] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    const stored = localStorage.getItem("lc_identity");
-    return stored || null;
-  });
-  const [displayName, setDisplayName] = useState<string>(() => (typeof window !== "undefined" ? localStorage.getItem("lc_display") || "" : ""));
+  const [username, setUsername] = useState<string | null>(null);
+  const [displayName, setDisplayName] = useState<string>("");
   const [hydrated, setHydrated] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
