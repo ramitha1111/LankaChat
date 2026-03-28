@@ -16,8 +16,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Link href="/admin" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: "0.85rem" }}>Dashboard</Link>
             <Link href="/admin/rooms" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: "0.85rem" }}>Rooms</Link>
             <Link href="/admin/blog" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: "0.85rem" }}>Blog</Link>
+            <Link href="/admin/contacts" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: "0.85rem" }}>Contacts</Link>
           </div>
-          <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.82rem" }}>? Back to Site</Link>
+          <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.82rem" }}>Back to Site</Link>
         </div>
       </nav>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "2rem 1.5rem" }}>

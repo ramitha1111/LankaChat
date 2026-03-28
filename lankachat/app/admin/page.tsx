@@ -46,7 +46,7 @@ export default async function AdminDashboard() {
     { label: "Chat Rooms", value: roomCount || 0, icon: <IconHome />, href: "/admin/rooms", color: "#2563EB" },
     { label: "Blog Posts", value: postCount || 0, icon: <IconNote />, href: "/admin/blog", color: "#7C3AED" },
     { label: "Messages Today", value: msgCount || 0, icon: <IconChat />, href: null, color: "#059669" },
-    { label: "Contact Requests", value: contactCount || 0, icon: <IconMail />, href: null, color: "#D97706" },
+    { label: "Contact Requests", value: contactCount || 0, icon: <IconMail />, href: "/admin/contacts", color: "#D97706" },
   ];
 
   return (

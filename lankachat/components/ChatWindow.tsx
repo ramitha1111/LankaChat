@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/client";
 import MessageBubble from "./MessageBubble";
 import Sidebar from "./Sidebar";
 import UsernameModal from "./UsernameModal";
+import Link from "next/link";
 
 const IconMessage = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -65,11 +66,11 @@ export default function ChatWindow({ rooms }: Props) {
   const [sidebarTab, setSidebarTab] = useState<"rooms" | "messages" | "users">("rooms");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dmUnread, setDmUnread] = useState<Record<string, number>>({});
-  const bottomRef = useRef<HTMLDivElement>(null);
+//const bottomRef = useRef<HTMLDivElement>(null);
   const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
   const presenceRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
-  const initialScrollDone = useRef(false);
+//const initialScrollDone = useRef(false);
 
   const playNotification = useCallback(async () => {
     if (typeof window === "undefined") return;
@@ -251,10 +252,10 @@ export default function ChatWindow({ rooms }: Props) {
   }, [username, activeRoom]);
 
   // Auto-scroll
-  useEffect(() => {
-    if (!initialScrollDone.current) { initialScrollDone.current = true; return; }
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  // useEffect(() => {
+  //   if (!initialScrollDone.current) { initialScrollDone.current = true; return; }
+  //   bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [messages]);
 
   // Send message
   const sendMessage = async () => {
@@ -314,6 +315,12 @@ export default function ChatWindow({ rooms }: Props) {
 
       {/* Main chat */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+        {/* Feedback CTA */}
+        <div style={{ padding: "0.75rem 1.25rem", background: "#EFF6FF", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", gap: "0.5rem", color: "#0F172A", fontSize: "0.9rem" }}>
+          <span style={{ fontWeight: 600 }}>Found a bug or have an idea?</span>
+          <Link href="/contact" style={{ marginLeft: "auto", color: "var(--primary)", fontWeight: 700, textDecoration: "none" }}>Contact us →</Link>
+        </div>
+
         {/* Header */}
         <div style={{ padding: "1rem 1.25rem", background: "white", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <div>
@@ -340,7 +347,7 @@ export default function ChatWindow({ rooms }: Props) {
           {messages.map(msg => (
             <MessageBubble key={msg.id} message={msg} currentUser={username || ""} displayNameFormatter={formatName} />
           ))}
-          <div ref={bottomRef} />
+          {/*<div ref={bottomRef} />*/}
         </div>
 
         {/* Input */}
